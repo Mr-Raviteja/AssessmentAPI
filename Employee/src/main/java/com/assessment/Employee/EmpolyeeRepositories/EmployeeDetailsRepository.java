@@ -14,9 +14,9 @@ public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
     @Autowired
     Session session;
 
-    public String CreateEmployee(EmployeeDetailsEntity employeeDetailsEntity) {
+    public Boolean CreateEmployee(EmployeeDetailsEntity employeeDetailsEntity) {
         session.save(employeeDetailsEntity);
-        return "saved successfully";
+        return true;
     }
 
     public EmployeeDetailsEntity getEmployeeById(int id) {

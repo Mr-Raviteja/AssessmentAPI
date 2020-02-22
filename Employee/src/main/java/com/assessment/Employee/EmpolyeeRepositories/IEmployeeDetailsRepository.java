@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IEmployeeDetailsRepository {
 
-    String CreateEmployee(EmployeeDetailsEntity employeeDetailsEntity);
+    Boolean CreateEmployee(EmployeeDetailsEntity employeeDetailsEntity);
 
     EmployeeDetailsEntity getEmployeeById(int id);
 
