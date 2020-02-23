@@ -18,7 +18,7 @@ public class EmployeeDetailsService {
     IEmployeeDetailsRepository iEmployeeDetailsRepository;
 
     public EmployeeDetailsEntity createOrUpdateEmployee(EmployeeDetailsEntity employeeDetailsEntity) {
-        EmployeeDetailsEntity empEntity = iEmployeeDetailsRepository.getEmployeeById(employeeDetailsEntity.getId());
+        EmployeeDetailsEntity empEntity = iEmployeeDetailsRepository.getEmployeeById(employeeDetailsEntity.getEmpId());
         if (null != empEntity) {
             EmployeeDetailsEntity employeeDetailsEntity1 = new EmployeeDetailsEntity();
             employeeDetailsEntity1.setFirstName(employeeDetailsEntity.getFirstName());
@@ -46,14 +46,14 @@ public class EmployeeDetailsService {
         }
     }
 
-    public EmployeeDetailsEntity getEmployeeDetailsById(Long id) throws Exception {
+    public EmployeeDetailsEntity getEmployeeDetailsById(Long empId) throws Exception {
 
-        EmployeeDetailsEntity employeeDetailsEntity = iEmployeeDetailsRepository.getEmployeeById(id);
+        EmployeeDetailsEntity employeeDetailsEntity = iEmployeeDetailsRepository.getEmployeeById(empId);
         return employeeDetailsEntity;
     }
 
-    public Boolean deleteEmployeebyId(Long id) {
-        iEmployeeDetailsRepository.deleteEmployeeById(id);
+    public Boolean deleteEmployeebyId(Long empId) {
+        iEmployeeDetailsRepository.deleteEmployeeById(empId);
         return true;
     }
 

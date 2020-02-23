@@ -10,6 +10,8 @@ public class EmployeeDetailsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
+    @Column(name = "EmpId")
+    private Long empId;
     @Column(name = "FirstName")
     private String firstName;
     @Column(name = "LastName")
@@ -28,8 +30,8 @@ public class EmployeeDetailsEntity {
     public EmployeeDetailsEntity() {
     }
 
-    public EmployeeDetailsEntity(Long id, String firstName, String lastName, String mobile, String emailAddress, String postCode, String city, String country) {
-        this.id = id;
+    public EmployeeDetailsEntity(Long empId, String firstName, String lastName, String mobile, String emailAddress, String postCode, String city, String country) {
+        this.empId = empId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobile = mobile;
@@ -43,8 +45,12 @@ public class EmployeeDetailsEntity {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Long empId) {
+        this.empId = empId;
     }
 
     public String getFirstName() {
@@ -107,6 +113,7 @@ public class EmployeeDetailsEntity {
     public String toString() {
         return "EmployeeDetailsEntity{" +
                 "id=" + id +
+                ", empId=" + empId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", mobile='" + mobile + '\'' +

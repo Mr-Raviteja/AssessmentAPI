@@ -15,8 +15,8 @@ public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
     Session session;
 
 
-    public EmployeeDetailsEntity getEmployeeById(Long id) {
-        return session.find(EmployeeDetailsEntity.class, id);
+    public EmployeeDetailsEntity getEmployeeById(Long empId) {
+        return session.find(EmployeeDetailsEntity.class, empId);
     }
 
     public List<EmployeeDetailsEntity> getAllEmployees() {
@@ -30,8 +30,8 @@ public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
         return true;
     }
 
-    public Boolean deleteEmployeeById(Long id) {
-        EmployeeDetailsEntity employee = session.find(EmployeeDetailsEntity.class, id);
+    public Boolean deleteEmployeeById(Long empId) {
+        EmployeeDetailsEntity employee = session.find(EmployeeDetailsEntity.class, empId);
         session.delete(employee);
         return true;
     }

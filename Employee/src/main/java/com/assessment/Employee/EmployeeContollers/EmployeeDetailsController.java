@@ -17,7 +17,7 @@ public class EmployeeDetailsController {
     @Autowired
     EmployeeDetailsService employeeDetailsService;
 
-    @PostMapping("/createEmp")
+    @PostMapping("/saveEmp")
     public ResponseEntity<EmployeeDetailsEntity> createOrUpdateEmp(@RequestBody EmployeeDetailsEntity employeeDetailsEntity) {
         EmployeeDetailsEntity emp = employeeDetailsService.createOrUpdateEmployee(employeeDetailsEntity);
         return new ResponseEntity<EmployeeDetailsEntity>(emp, new HttpHeaders(), HttpStatus.OK);
@@ -29,16 +29,16 @@ public class EmployeeDetailsController {
         return new ResponseEntity<List<EmployeeDetailsEntity>>(empList, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<EmployeeDetailsEntity> getEmployeeById(@PathVariable("id") Long id)
+    @GetMapping("/{empId}")
+    public ResponseEntity<EmployeeDetailsEntity> getEmployeeById(@PathVariable("empId") Long empId)
             throws Exception {
-        EmployeeDetailsEntity entity = employeeDetailsService.getEmployeeDetailsById(id);
+        EmployeeDetailsEntity entity = employeeDetailsService.getEmployeeDetailsById(empId);
 
         return new ResponseEntity<EmployeeDetailsEntity>(entity, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/id")
-    public HttpStatus deleteEmployee(@PathVariable("id") Long empId) throws Exception {
+    @DeleteMapping("/empId")
+    public HttpStatus deleteEmployee(@PathVariable("empId") Long empId) throws Exception {
         boolean result = employeeDetailsService.deleteEmployeebyId(empId);
         return HttpStatus.FORBIDDEN;
     }
