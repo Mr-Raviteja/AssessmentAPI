@@ -11,7 +11,7 @@ public interface IEmployeeDetailsRepository {
 
     List<EmployeeDetailsEntity> getAllEmployees();
 
-    Boolean saveOrupdateEmployeeDetails(EmployeeDetailsEntity employeeDetailsEntity);
+    void saveOrupdateEmployeeDetails(EmployeeDetailsEntity employeeDetailsEntity);
 
-    Boolean deleteEmployeeById(Long id);
+    void deleteEmployeeById(Long id);
 }
