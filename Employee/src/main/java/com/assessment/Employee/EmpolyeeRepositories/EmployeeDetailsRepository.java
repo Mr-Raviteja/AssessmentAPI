@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
 public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
 
@@ -17,10 +18,9 @@ public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
 
 
     public EmployeeDetailsEntity getEmployeeById(Long empId) {
-        //return session.find(EmployeeDetailsEntity.class,"EmpId", empId);
-        return (EmployeeDetailsEntity) session.createCriteria(EmployeeDetailsEntity.class)
-                .add(Restrictions.eq("EmpId", empId)).setMaxResults(1);
 
+        return (EmployeeDetailsEntity) session.createCriteria(EmployeeDetailsEntity.class)
+                .add(Restrictions.eq("empId", empId)).setMaxResults(1).uniqueResult();
     }
 
     public List<EmployeeDetailsEntity> getAllEmployees() {
@@ -31,9 +31,8 @@ public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
         session.saveOrUpdate(employeeDetailsEntity);
     }
 
-    public void deleteEmployeeById(Long empId) {
-        EmployeeDetailsEntity employee = session.find(EmployeeDetailsEntity.class, empId);
-        session.delete(employee);
+    public void deleteEmployeeById(EmployeeDetailsEntity employeeDetailsEntity) {
+        session.remove(employeeDetailsEntity);
         session.flush();
     }
 

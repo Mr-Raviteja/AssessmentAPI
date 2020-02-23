@@ -5,8 +5,8 @@ import com.assessment.Employee.EmpolyeeEntities.EmployeeDetailsEntity;
 import com.assessment.Employee.EmpolyeeRepositories.IEmployeeDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +36,8 @@ public class EmployeeDetailsService {
     }
 
     public void deleteEmployeebyId(Long empId) {
-        iEmployeeDetailsRepository.deleteEmployeeById(empId);
+        EmployeeDetailsEntity employeeDetailsEntity = iEmployeeDetailsRepository.getEmployeeById(empId);
+        iEmployeeDetailsRepository.deleteEmployeeById(employeeDetailsEntity);
     }
 
     public List<EmployeeDetailsEntity> getAllEmployess() {

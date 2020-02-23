@@ -13,5 +13,5 @@ public interface IEmployeeDetailsRepository {
 
     void saveOrupdateEmployeeDetails(EmployeeDetailsEntity employeeDetailsEntity);
 
-    void deleteEmployeeById(Long id);
+    void deleteEmployeeById(EmployeeDetailsEntity employeeDetailsEntity);
 }
