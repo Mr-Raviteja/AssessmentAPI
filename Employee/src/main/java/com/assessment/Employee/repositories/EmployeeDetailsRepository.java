@@ -1,14 +1,15 @@
-package com.assessment.Employee.EmpolyeeRepositories;
+package com.assessment.Employee.repositories;
 
-import com.assessment.Employee.EmpolyeeEntities.EmployeeDetailsEntity;
+import com.assessment.Employee.entities.EmployeeDetailsEntity;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
+@Transactional
 @Repository
 public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
 

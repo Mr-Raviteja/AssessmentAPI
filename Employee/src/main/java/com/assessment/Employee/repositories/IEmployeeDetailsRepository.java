@@ -1,6 +1,6 @@
-package com.assessment.Employee.EmpolyeeRepositories;
+package com.assessment.Employee.repositories;
 
-import com.assessment.Employee.EmpolyeeEntities.EmployeeDetailsEntity;
+import com.assessment.Employee.entities.EmployeeDetailsEntity;
 
 import java.util.List;
 

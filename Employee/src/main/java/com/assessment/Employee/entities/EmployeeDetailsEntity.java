@@ -1,4 +1,4 @@
-package com.assessment.Employee.EmpolyeeEntities;
+package com.assessment.Employee.entities;
 
 import javax.persistence.*;
 
