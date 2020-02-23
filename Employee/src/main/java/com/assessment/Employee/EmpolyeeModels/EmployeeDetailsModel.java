@@ -3,7 +3,7 @@ package com.assessment.Employee.EmpolyeeModels;
 public class EmployeeDetailsModel {
 
 
-    private int id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String mobile;
@@ -15,7 +15,7 @@ public class EmployeeDetailsModel {
     public EmployeeDetailsModel() {
     }
 
-    public EmployeeDetailsModel(int id, String firstName, String lastName, String mobile, String emailAddress, String postCode, String city, String country) {
+    public EmployeeDetailsModel(Long id, String firstName, String lastName, String mobile, String emailAddress, String postCode, String city, String country) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,11 +26,11 @@ public class EmployeeDetailsModel {
         this.country = country;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

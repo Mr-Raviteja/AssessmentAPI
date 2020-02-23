@@ -14,12 +14,8 @@ public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
     @Autowired
     Session session;
 
-    public Boolean CreateEmployee(EmployeeDetailsEntity employeeDetailsEntity) {
-        session.save(employeeDetailsEntity);
-        return true;
-    }
 
-    public EmployeeDetailsEntity getEmployeeById(int id) {
+    public EmployeeDetailsEntity getEmployeeById(Long id) {
         return session.find(EmployeeDetailsEntity.class, id);
     }
 
@@ -29,15 +25,15 @@ public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
 
     }
 
-    public String updateEmployeeDetails(EmployeeDetailsEntity employeeDetailsEntity) {
+    public Boolean saveOrupdateEmployeeDetails(EmployeeDetailsEntity employeeDetailsEntity) {
         session.saveOrUpdate(employeeDetailsEntity);
-        return "updated sucessfully";
+        return true;
     }
 
-    public String deleteEmployeeById(int id) {
+    public Boolean deleteEmployeeById(Long id) {
         EmployeeDetailsEntity employee = session.find(EmployeeDetailsEntity.class, id);
         session.delete(employee);
-        return "deleted successfull";
+        return true;
     }
 
 

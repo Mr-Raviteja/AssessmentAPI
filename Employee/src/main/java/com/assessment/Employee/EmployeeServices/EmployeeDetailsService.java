@@ -2,29 +2,59 @@ package com.assessment.Employee.EmployeeServices;
 
 
 import com.assessment.Employee.EmpolyeeEntities.EmployeeDetailsEntity;
-import com.assessment.Employee.EmpolyeeModels.EmployeeDetailsModel;
 import com.assessment.Employee.EmpolyeeRepositories.IEmployeeDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
 @Service
 public class EmployeeDetailsService {
 
     @Autowired
     IEmployeeDetailsRepository iEmployeeDetailsRepository;
 
-    public Boolean createEmployee(EmployeeDetailsModel employeeDetailsModel) {
-        EmployeeDetailsEntity empEntity = new EmployeeDetailsEntity();
-        empEntity.setFirstName(employeeDetailsModel.getFirstName());
+    public EmployeeDetailsEntity createOrUpdateEmployee(EmployeeDetailsEntity employeeDetailsEntity) {
+        EmployeeDetailsEntity empEntity = iEmployeeDetailsRepository.getEmployeeById(employeeDetailsEntity.getId());
+        if (null != empEntity) {
+            EmployeeDetailsEntity employeeDetailsEntity1 = new EmployeeDetailsEntity();
+            employeeDetailsEntity1.setFirstName(employeeDetailsEntity.getFirstName());
+            employeeDetailsEntity1.setLastName(employeeDetailsEntity.getLastName());
+            employeeDetailsEntity1.setMobile(employeeDetailsEntity.getMobile());
+            employeeDetailsEntity1.setEmailAddress(employeeDetailsEntity.getEmailAddress());
+            employeeDetailsEntity1.setCity(employeeDetailsEntity.getCity());
+            employeeDetailsEntity1.setCountry(employeeDetailsEntity.getCountry());
+            employeeDetailsEntity1.setPostCode(employeeDetailsEntity.getPostCode());
 
-        iEmployeeDetailsRepository.CreateEmployee(empEntity);
-        return true;
+            iEmployeeDetailsRepository.saveOrupdateEmployeeDetails(employeeDetailsEntity1);
+            return empEntity;
+        } else {
+            iEmployeeDetailsRepository.saveOrupdateEmployeeDetails(employeeDetailsEntity);
+            return empEntity;
+        }
     }
 
     public List<EmployeeDetailsEntity> getAllEmployess() {
         List<EmployeeDetailsEntity> employeeDetailsEntityList = iEmployeeDetailsRepository.getAllEmployees();
-        return employeeDetailsEntityList;
+        if (employeeDetailsEntityList.size() > 0) {
+            return employeeDetailsEntityList;
+        } else {
+            return new ArrayList<EmployeeDetailsEntity>();
+        }
     }
+
+    public EmployeeDetailsEntity getEmployeeDetailsById(Long id) throws Exception {
+
+        EmployeeDetailsEntity employeeDetailsEntity = iEmployeeDetailsRepository.getEmployeeById(id);
+        return employeeDetailsEntity;
+    }
+
+    public Boolean deleteEmployeebyId(Long id) {
+        iEmployeeDetailsRepository.deleteEmployeeById(id);
+        return true;
+    }
+
 }

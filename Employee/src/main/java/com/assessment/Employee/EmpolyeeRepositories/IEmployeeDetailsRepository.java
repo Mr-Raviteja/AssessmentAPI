@@ -6,13 +6,12 @@ import java.util.List;
 
 public interface IEmployeeDetailsRepository {
 
-    Boolean CreateEmployee(EmployeeDetailsEntity employeeDetailsEntity);
 
-    EmployeeDetailsEntity getEmployeeById(int id);
+    EmployeeDetailsEntity getEmployeeById(Long id);
 
     List<EmployeeDetailsEntity> getAllEmployees();
 
-    String updateEmployeeDetails(EmployeeDetailsEntity employeeDetailsEntity);
+    Boolean saveOrupdateEmployeeDetails(EmployeeDetailsEntity employeeDetailsEntity);
 
-    String deleteEmployeeById(int id);
+    Boolean deleteEmployeeById(Long id);
 }
