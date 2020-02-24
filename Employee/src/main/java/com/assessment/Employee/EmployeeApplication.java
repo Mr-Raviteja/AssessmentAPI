@@ -21,13 +21,12 @@ public class EmployeeApplication {
     @Bean
     public Session session(EntityManagerFactory emf) {
 
-        SessionFactory sessionFactory = null;
+        SessionFactory sessionFactory = emf.unwrap(SessionFactory.class);
 
 
         try {
-            if (sessionFactory == null)
-                sessionFactory = emf.unwrap(SessionFactory.class);
-            return sessionFactory.openSession();
+            if (sessionFactory.isClosed())
+                return sessionFactory.openSession();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
