@@ -1,0 +1,14 @@
+-- DataBase Name: Employee
+
+
+CREATE TABLE `employeedetails` (
+  `EmpId` bigint AUTO_INCREMENT,
+  `FirstName` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `LastName` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `Mobile` varchar(15) COLLATE utf8_bin DEFAULT NULL,
+  `Email` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `PostCode` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `City` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `Country` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`EmpId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
