@@ -8,8 +8,6 @@ public class EmployeeDetailsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    private Long id;
     @Column(name = "EmpId")
     private Long empId;
     @Column(name = "FirstName")
@@ -30,7 +28,7 @@ public class EmployeeDetailsEntity {
     public EmployeeDetailsEntity() {
     }
 
-    public EmployeeDetailsEntity(Long empId, String firstName, String lastName, String mobile, String emailAddress, String postCode, String city, String country) {
+    public EmployeeDetailsEntity(String firstName, String lastName, String mobile, String emailAddress, String postCode, String city, String country) {
         this.empId = empId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,9 +39,9 @@ public class EmployeeDetailsEntity {
         this.country = country;
     }
 
-    public Long getId() {
+  /*  public Long getId() {
         return id;
-    }
+    }*/
 
     public Long getEmpId() {
         return empId;
@@ -112,7 +110,7 @@ public class EmployeeDetailsEntity {
     @Override
     public String toString() {
         return "EmployeeDetailsEntity{" +
-                "id=" + id +
+                // "id=" + id +
                 ", empId=" + empId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

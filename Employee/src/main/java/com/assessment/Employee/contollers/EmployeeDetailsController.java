@@ -24,7 +24,7 @@ public class EmployeeDetailsController {
     }
 
     @RequestMapping(value = "/employees/{empId}", method = RequestMethod.PUT)
-    public ResponseEntity<EmployeeDetailsEntity> updateEmployee(@RequestBody EmployeeDetailsEntity employeeDetailsEntity, @PathVariable Long empId) {
+    public ResponseEntity<EmployeeDetailsEntity> createOrUpdateEmp(@RequestBody EmployeeDetailsEntity employeeDetailsEntity, @PathVariable Long empId) {
         EmployeeDetailsEntity emp = employeeDetailsService.createOrUpdateEmployee(employeeDetailsEntity, empId);
         return new ResponseEntity<EmployeeDetailsEntity>(emp, new HttpHeaders(), HttpStatus.OK);
     }
@@ -38,14 +38,13 @@ public class EmployeeDetailsController {
         return employeeDetailsEntity;
     }
 
-    @RequestMapping(value = "/emloyees/{empId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/employees/{empId}", method = RequestMethod.DELETE)
     public String deleteEmployee(@PathVariable Long empId) throws Exception {
         EmployeeDetailsEntity employeeDetailsEntity = employeeDetailsService.getEmployeeDetailsById(empId);
         if (null == employeeDetailsEntity)
             throw new Exception("Could not find employee with Id " + employeeDetailsEntity.getEmpId());
-
         employeeDetailsService.deleteEmployeebyId(empId);
-        return "deleted Successfull";
+        return "deleted Successfully";
     }
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)

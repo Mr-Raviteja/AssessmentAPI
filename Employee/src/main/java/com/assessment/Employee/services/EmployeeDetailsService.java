@@ -5,10 +5,12 @@ import com.assessment.Employee.entities.EmployeeDetailsEntity;
 import com.assessment.Employee.repositories.IEmployeeDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
 @Service
 public class EmployeeDetailsService {
 
@@ -17,12 +19,22 @@ public class EmployeeDetailsService {
 
     public EmployeeDetailsEntity createOrUpdateEmployee(EmployeeDetailsEntity employeeDetailsEntity, Long empId) {
 
-        if (null != empId) {
+        if (null == empId) {
             iEmployeeDetailsRepository.saveOrupdateEmployeeDetails(employeeDetailsEntity);
             return employeeDetailsEntity;
         } else {
-            iEmployeeDetailsRepository.saveOrupdateEmployeeDetails(employeeDetailsEntity);
-            return employeeDetailsEntity;
+            EmployeeDetailsEntity employeeDetailsEntity1 = iEmployeeDetailsRepository.getEmployeeById(empId);
+
+            employeeDetailsEntity1.setFirstName(employeeDetailsEntity.getFirstName());
+            employeeDetailsEntity1.setLastName(employeeDetailsEntity.getLastName());
+            employeeDetailsEntity1.setMobile(employeeDetailsEntity.getMobile());
+            employeeDetailsEntity1.setEmailAddress(employeeDetailsEntity.getEmailAddress());
+            employeeDetailsEntity1.setCity(employeeDetailsEntity.getCity());
+            employeeDetailsEntity1.setCountry(employeeDetailsEntity.getCountry());
+            employeeDetailsEntity1.setPostCode(employeeDetailsEntity.getPostCode());
+            iEmployeeDetailsRepository.saveOrupdateEmployeeDetails(employeeDetailsEntity1);
+
+            return iEmployeeDetailsRepository.getEmployeeById(employeeDetailsEntity1.getEmpId());
         }
     }
 

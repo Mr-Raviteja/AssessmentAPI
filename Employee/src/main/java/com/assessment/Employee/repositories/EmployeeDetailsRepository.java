@@ -29,7 +29,8 @@ public class EmployeeDetailsRepository implements IEmployeeDetailsRepository {
     }
 
     public void saveOrupdateEmployeeDetails(EmployeeDetailsEntity employeeDetailsEntity) {
-        session.saveOrUpdate(employeeDetailsEntity);
+        session.save(employeeDetailsEntity);
+        session.flush();
     }
 
     public void deleteEmployeeById(EmployeeDetailsEntity employeeDetailsEntity) {
